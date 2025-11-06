@@ -95,7 +95,7 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas): # COMPLETA
     """
     # TODO: Implementar la función
     # - Imprimir intentos restantes X
-    # - Imprimir la palabra con espacios entre caracteres
+    # - Imprimir la palabra con espacios entre caracteres X
     # - Imprimir las letras usadas X
 
     # INTENTOS RESTANTES
@@ -129,6 +129,21 @@ def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
     # - Usar enumerate() para obtener índice y carácter
     # - Si el carácter coincide con la letra, reemplazar en palabra_oculta
     # - Puedes convertir palabra_oculta a lista, modificar y volver a string
+    
+    lista_palabra_oculta = []
+    for i in palabra_oculta:
+        lista_palabra_oculta.append("_")
+
+    for indice, letra_for in enumerate(palabra):
+        if letra_for == letra:
+            lista_palabra_oculta.pop(indice)
+            lista_palabra_oculta.insert(indice, letra)
+    
+    palabra_oculta_nueva = ""
+    for i in lista_palabra_oculta:
+        palabra_oculta_nueva =+ i
+    
+    return palabra_oculta_nueva
 
 
 def jugar():
