@@ -150,3 +150,62 @@ Profesor: revilofe
 
 ## Licencia
 Material educativo para uso académico
+
+# Prueba de debug
+
+Como prueba de que he debugeado añado la siguiente imagen:
+
+![Imagen del debug](assets/prueba_debug.png)
+
+Lo que ocurria en el código era que no reconocia la letra que habia introducido en los turnos anteriores. Por ejemplo (Teniendo en cuenta que la palabra es silla):
+
+```
+Intentos restantes >> 5
+
+Palabra:
+_ _ _ _ _ 
+
+De momento no has usado ninguna letra
+
+Introduce una letra >> a
+```
+
+Al poner "a" se quita el ultimo guión y se pone una "a". Vamos a poner ahora la "l"
+
+```
+Intentos restantes >> 5
+
+Palabra:
+_ _ _ _ A 
+
+Letras usadas:
+
+a
+
+Introduce una letra >> l
+```
+
+Lo que salía es lo siguiente:
+
+```
+Intentos restantes >> 5
+
+Palabra:
+_ _ L L _ 
+
+Letras usadas:
+
+a l
+
+Introduce una letra >> 
+```
+
+Como se ve, se me eliminaban los caracteres acertados anteriormente. Depurando vi que el fallo estaba en esta parte:
+
+```python
+lista_palabra_oculta = []
+    for i in palabra_oculta:
+        lista_palabra_oculta.append("_")
+```
+
+El fallo estaba en ```lista_palabra_oculta.append("_")``` ya que lo que habria que añadir a la lista es ```i``` y no ```"_"```. 
