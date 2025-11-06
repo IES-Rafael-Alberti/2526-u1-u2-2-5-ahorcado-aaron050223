@@ -110,9 +110,12 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas): # COMPLETA
     if not letras_usadas:
         print("\n\nDe momento no has usado ninguna letra")
     else:
-        print("\n\nLetras usadas:")
+        print("\n\nLetras usadas:\n")
         for i in letras_usadas:
-            print(i, end =" ")
+            if i == letras_usadas[-1]:
+                print(i)
+            else:
+                print(i, end =" ")
 
 def actualizar_palabra_oculta(palabra, palabra_oculta, letra): # COMPLETA
     """
