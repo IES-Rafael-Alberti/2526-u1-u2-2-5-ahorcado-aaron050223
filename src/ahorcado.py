@@ -38,16 +38,16 @@ def solicitar_palabra(): # COMPLETA
 
     palabras = [
     "Casa", "Perro", "Gato", "Luna", "Agua", "Fuego", "Tierra", "Aire", 
-    "Árbol", "Flor", "Montaña", "Cielo", "Nube", "Estrella", "Leche", 
+    "Arbol", "Flor", "Montaña", "Cielo", "Nube", "Estrella", "Leche", 
     "Manzana", "Coche", "Libro", "Mesa", "Silla", "Puerta", "Ventana", 
     "Cama", "Noche", "Hombre", "Mujer", "Niño", "Niña", "Amigo", 
     "Familia", "Comida", "Bebida", "Dinero", "Tiempo", "Trabajo", 
-    "Escuela", "Ciudad", "País", "Mundo", "Mano", "Ojos", "Nariz", 
+    "Escuela", "Ciudad", "Pais", "Mundo", "Mano", "Ojos", "Nariz", 
     "Boca", "Estar", "Tener", "Haber", "Venir", "Hacer", "Decir", 
     "Comer", "Beber", "Dormir", "Jugar", "Hablar", "Querer", "Poder", 
     "Saber", "Vivir", "Grande", "Pequeño", "Bueno", "Malo", "Feliz", 
-    "Triste", "Nuevo", "Viejo", "Bonito", "Caliente", "Frío", "Alto", 
-    "Bajo", "Rápido", "Lento", "Fácil", "Difícil", "Blanco", "Negro", 
+    "Triste", "Nuevo", "Viejo", "Bonito", "Caliente", "Frio", "Alto", 
+    "Bajo", "Rapido", "Lento", "Facil", "Dificil", "Blanco", "Negro", 
     "Pero", "Para"
     ]
 
@@ -152,6 +152,7 @@ def jugar():
     """
     Función principal que ejecuta el juego del ahorcado
     """
+    limpiar_pantalla()
     print("=== JUEGO DEL AHORCADO ===\n")
     
     # Configuración inicial
@@ -159,7 +160,6 @@ def jugar():
     
     # TODO: Solicitar la palabra al jugador 1
     palabra = solicitar_palabra()
-    print(palabra)
     
     
     # TODO: Inicializar variables del juego
@@ -200,11 +200,12 @@ def jugar():
         else:
             intentos -= 1
             print("\n¡Has fallado!")
+        limpiar_pantalla()
     
     if intentos > 0:
-        print("\n¡Has ganado!")
+        print(f"\n¡Has ganado! La palabra era >> {palabra}")
     else:
-        print("\n¡Has perdido!")
+        print(f"\n¡Has perdido! La palabra era >> {palabra}")
 
 
 def main():
@@ -221,6 +222,8 @@ def main():
     jugar_otra_vez = input("\n¿Quieres jugar otra vez? (s/n): ")
     if jugar_otra_vez.lower() == 's':
         main()
+    else:
+        print("Saliendo...")
 
 if __name__ == "__main__":
     main()
