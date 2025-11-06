@@ -12,6 +12,7 @@ Autor: Aarón Gallardo Canto
 Fecha: 6/11/2025
 """
 
+import random 
 
 def limpiar_pantalla():
     """
@@ -36,6 +37,23 @@ def solicitar_palabra():
     # - Convertir a mayúsculas (upper())
     pass
 
+    palabras = [
+    "Casa", "Perro", "Gato", "Luna", "Agua", "Fuego", "Tierra", "Aire", 
+    "Árbol", "Flor", "Montaña", "Cielo", "Nube", "Estrella", "Leche", 
+    "Manzana", "Coche", "Libro", "Mesa", "Silla", "Puerta", "Ventana", 
+    "Cama", "Noche", "Hombre", "Mujer", "Niño", "Niña", "Amigo", 
+    "Familia", "Comida", "Bebida", "Dinero", "Tiempo", "Trabajo", 
+    "Escuela", "Ciudad", "País", "Mundo", "Mano", "Ojos", "Nariz", 
+    "Boca", "Estar", "Tener", "Haber", "Venir", "Hacer", "Decir", 
+    "Comer", "Beber", "Dormir", "Jugar", "Hablar", "Querer", "Poder", 
+    "Saber", "Vivir", "Grande", "Pequeño", "Bueno", "Malo", "Feliz", 
+    "Triste", "Nuevo", "Viejo", "Bonito", "Caliente", "Frío", "Alto", 
+    "Bajo", "Rápido", "Lento", "Fácil", "Difícil", "Blanco", "Negro", 
+    "Pero", "Para"
+    ]
+
+    numero_azar = random.randint(1,78)
+    return palabras[numero_azar]
 
 def solicitar_letra(letras_usadas): # COMPLETA
     """
