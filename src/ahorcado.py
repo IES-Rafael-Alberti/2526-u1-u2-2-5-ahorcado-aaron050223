@@ -8,8 +8,8 @@ Práctica de programación que evalúa:
 - Sentencias iterativas
 - Manipulación de strings
 
-Autor: [Nombre del alumno]
-Fecha: [Fecha]
+Autor: Aarón Gallardo Canto
+Fecha: 6/11/2025
 """
 
 
@@ -37,7 +37,7 @@ def solicitar_palabra():
     pass
 
 
-def solicitar_letra(letras_usadas):
+def solicitar_letra(letras_usadas): # COMPLETA
     """
     Solicita una letra al jugador 2
     La letra debe ser válida (solo una letra) y no estar ya usada
@@ -49,13 +49,21 @@ def solicitar_letra(letras_usadas):
         str: La letra introducida en mayúsculas
     """
     # TODO: Implementar la función
-    # - Usar un bucle while para repetir hasta que la letra sea válida
-    # - Verificar que sea solo un carácter (len() == 1)
-    # - Verificar que sea una letra (isalpha())
-    # - Verificar que no esté en letras_usadas (operador 'in')
-    # - Convertir a mayúsculas (upper())
+    # - Usar un bucle while para repetir hasta que la letra sea válida X
+    # - Verificar que sea solo un carácter (len() == 1) X
+    # - Verificar que sea una letra (isalpha()) X
+    # - Verificar que no esté en letras_usadas (operador 'in') X
+    # - Convertir a mayúsculas (upper()) X
     pass
 
+    bucle = None
+    while bucle == None:
+        letra = str(input("Introduce una letra >> "))
+        if not letra.isalpha() or len(letra) != 1 or letra not in letras_usadas:
+            print("Por favor, introduce una letra")
+        else:
+            letras_usadas.append(letra)
+            return letra.upper()
 
 def mostrar_estado(palabra_oculta, intentos, letras_usadas):
     """
