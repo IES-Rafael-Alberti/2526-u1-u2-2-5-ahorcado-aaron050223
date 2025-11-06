@@ -14,7 +14,7 @@ Fecha: 6/11/2025
 
 import random 
 
-def limpiar_pantalla():
+def limpiar_pantalla(): # COMPLETA
     """
     Imprime varias líneas en blanco para 'limpiar' la consola
     y que el jugador 2 no vea la palabra introducida
@@ -22,7 +22,7 @@ def limpiar_pantalla():
     print("\n" * 50)
 
 
-def solicitar_palabra():
+def solicitar_palabra(): # COMPLETA
     """
     Solicita una palabra al jugador 1
     La palabra debe tener mínimo 5 caracteres y solo contener letras
@@ -35,7 +35,6 @@ def solicitar_palabra():
     # - Verificar que tenga al menos 5 caracteres (len())
     # - Verificar que solo contenga letras (isalpha())
     # - Convertir a mayúsculas (upper())
-    pass
 
     palabras = [
     "Casa", "Perro", "Gato", "Luna", "Agua", "Fuego", "Tierra", "Aire", 
@@ -72,21 +71,20 @@ def solicitar_letra(letras_usadas): # COMPLETA
     # - Verificar que sea una letra (isalpha()) X
     # - Verificar que no esté en letras_usadas (operador 'in') X
     # - Convertir a mayúsculas (upper()) X
-    pass
 
     bucle = None
     while bucle == None:
-        letra = str(input("Introduce una letra >> "))
+        letra = str(input("\nIntroduce una letra >> "))
         if not letra.isalpha() or len(letra) != 1:
-            print("Por favor, introduce una letra")
+            print("\nPor favor, introduce una letra")
         else:
             if not letra in letras_usadas:
                 letras_usadas.append(letra)
                 return letra.upper()
             else:
-                print("Ya has probado con esa letra. Por favor, introduce otra letra")
+                print("\nYa has probado con esa letra. Por favor, introduce otra letra")
 
-def mostrar_estado(palabra_oculta, intentos, letras_usadas):
+def mostrar_estado(palabra_oculta, intentos, letras_usadas): # COMPLETA
     """
     Muestra el estado actual del juego
     
@@ -96,10 +94,22 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas):
         letras_usadas (list): Lista de letras ya usadas
     """
     # TODO: Implementar la función
-    # - Imprimir intentos restantes
+    # - Imprimir intentos restantes X
     # - Imprimir la palabra con espacios entre caracteres
-    # - Imprimir las letras usadas
-    pass
+    # - Imprimir las letras usadas X
+
+    # INTENTOS RESTANTES
+    intentos_usuario = intentos - len(letras_usadas)
+    print(f"\nIntentos restantes >> {intentos_usuario}")
+
+    # PALABRA CON ESPACIOS ENTRE CARACTERES
+    for i in palabra_oculta:
+        print(i, end =" ")
+
+    # LETRAS USADAS HASTA EL MOMENTO
+    print("\nLetras usadas:")
+    for i in letras_usadas:
+        print(i, end =" ")
 
 
 def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
@@ -119,7 +129,6 @@ def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
     # - Usar enumerate() para obtener índice y carácter
     # - Si el carácter coincide con la letra, reemplazar en palabra_oculta
     # - Puedes convertir palabra_oculta a lista, modificar y volver a string
-    pass
 
 
 def jugar():
