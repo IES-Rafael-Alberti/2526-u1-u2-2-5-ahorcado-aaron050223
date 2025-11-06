@@ -52,7 +52,7 @@ def solicitar_palabra(): # COMPLETA
     ]
 
     numero_azar = random.randint(1,78)
-    return palabras[numero_azar]
+    return palabras[numero_azar].upper()
 
 def solicitar_letra(letras_usadas): # COMPLETA
     """
@@ -99,20 +99,22 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas): # COMPLETA
     # - Imprimir las letras usadas X
 
     # INTENTOS RESTANTES
-    intentos_usuario = intentos - len(letras_usadas)
-    print(f"\nIntentos restantes >> {intentos_usuario}")
+    print(f"\nIntentos restantes >> {intentos}")
 
     # PALABRA CON ESPACIOS ENTRE CARACTERES
+    print("\nPalabra:")
     for i in palabra_oculta:
         print(i, end =" ")
 
     # LETRAS USADAS HASTA EL MOMENTO
-    print("\nLetras usadas:")
-    for i in letras_usadas:
-        print(i, end =" ")
+    if not letras_usadas:
+        print("\n\nDe momento no has usado ninguna letra")
+    else:
+        print("\n\nLetras usadas:")
+        for i in letras_usadas:
+            print(i, end =" ")
 
-
-def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
+def actualizar_palabra_oculta(palabra, palabra_oculta, letra): # COMPLETA
     """
     Actualiza la palabra oculta revelando las apariciones de la letra
     
@@ -132,7 +134,7 @@ def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
     
     lista_palabra_oculta = []
     for i in palabra_oculta:
-        lista_palabra_oculta.append("_")
+        lista_palabra_oculta.append(i)
 
     for indice, letra_for in enumerate(palabra):
         if letra_for == letra:
@@ -141,7 +143,7 @@ def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
     
     palabra_oculta_nueva = ""
     for i in lista_palabra_oculta:
-        palabra_oculta_nueva =+ i
+        palabra_oculta_nueva += i
     
     return palabra_oculta_nueva
 
@@ -156,18 +158,19 @@ def jugar():
     INTENTOS_MAXIMOS = 5
     
     # TODO: Solicitar la palabra al jugador 1
-    # palabra = solicitar_palabra()
+    palabra = solicitar_palabra()
+    print(palabra)
     
-    # TODO: Limpiar la pantalla para que el jugador 2 no vea la palabra
-    # limpiar_pantalla()
     
     # TODO: Inicializar variables del juego
-    # - palabra_oculta: string con guiones bajos (ej: "_ _ _ _ _")
-    # - intentos: número de intentos restantes
-    # - letras_usadas: lista vacía
-    # - juego_terminado: False
+    palabra_oculta = ""
+    for i in palabra:
+        palabra_oculta += "_"
     
-    print("Jugador 2: ¡Adivina la palabra!\n")
+    intentos = INTENTOS_MAXIMOS
+    letras_usadas = []
+    juego_terminado = False
+    
     
     # TODO: Bucle principal del juego
     # - Mientras haya intentos y el juego no haya terminado:
@@ -185,7 +188,23 @@ def jugar():
     # TODO: Mostrar mensaje final
     # - Si ganó: mostrar felicitación y la palabra
     # - Si perdió: mostrar mensaje de derrota y la palabra correcta
-    pass
+    
+    while not juego_terminado and intentos > 0:
+        mostrar_estado(palabra_oculta, intentos, letras_usadas)
+        letra = solicitar_letra(letras_usadas)
+        if letra in palabra:
+            palabra_oculta = actualizar_palabra_oculta(palabra, palabra_oculta, letra)
+            print("\n¡Has acertado!")
+            if not "_" in palabra_oculta:
+                juego_terminado = True
+        else:
+            intentos -= 1
+            print("\n¡Has fallado!")
+    
+    if intentos > 0:
+        print("\n¡Has ganado!")
+    else:
+        print("\n¡Has perdido!")
 
 
 def main():
@@ -199,6 +218,9 @@ def main():
     # if jugar_otra_vez.lower() == 's':
     #     main()
 
+    jugar_otra_vez = input("\n¿Quieres jugar otra vez? (s/n): ")
+    if jugar_otra_vez.lower() == 's':
+        main()
 
 if __name__ == "__main__":
     main()
