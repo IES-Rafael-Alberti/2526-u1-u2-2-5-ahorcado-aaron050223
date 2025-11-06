@@ -59,11 +59,14 @@ def solicitar_letra(letras_usadas): # COMPLETA
     bucle = None
     while bucle == None:
         letra = str(input("Introduce una letra >> "))
-        if not letra.isalpha() or len(letra) != 1 or letra not in letras_usadas:
+        if not letra.isalpha() or len(letra) != 1:
             print("Por favor, introduce una letra")
         else:
-            letras_usadas.append(letra)
-            return letra.upper()
+            if not letra in letras_usadas:
+                letras_usadas.append(letra)
+                return letra.upper()
+            else:
+                print("Ya has probado con esa letra. Por favor, introduce otra letra")
 
 def mostrar_estado(palabra_oculta, intentos, letras_usadas):
     """
