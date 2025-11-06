@@ -27,8 +27,8 @@ def solicitar_palabra(): # COMPLETA
     Solicita una palabra al jugador 1
     La palabra debe tener mínimo 5 caracteres y solo contener letras
     
-    Returns:
-        str: La palabra a adivinar en mayúsculas
+    :returns: La palabra a adivinar en mayúsculas
+    :rtype: str
     """
     # TODO: Implementar la función
     # - Usar un bucle while para repetir hasta que la palabra sea válida
@@ -59,11 +59,10 @@ def solicitar_letra(letras_usadas): # COMPLETA
     Solicita una letra al jugador 2
     La letra debe ser válida (solo una letra) y no estar ya usada
     
-    Args:
-        letras_usadas (list): Lista de letras ya introducidas
-        
-    Returns:
-        str: La letra introducida en mayúsculas
+    :param letras_usadas: Lista de letras ya introducidas
+    :type letras_usadas: list
+    :returns: La letra introducida en mayúsculas
+    :rtype: str
     """
     # TODO: Implementar la función
     # - Usar un bucle while para repetir hasta que la letra sea válida X
@@ -88,10 +87,12 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas): # COMPLETA
     """
     Muestra el estado actual del juego
     
-    Args:
-        palabra_oculta (str): La palabra con _ y letras adivinadas
-        intentos (int): Número de intentos restantes
-        letras_usadas (list): Lista de letras ya usadas
+    :param palabra_oculta: La palabra con _ y letras adivinadas
+    :type palabra_oculta: str
+    :param intentos: Número de intentos restantes
+    :type intentos: int
+    :param letras_usadas: Lista de letras ya usadas
+    :type letras_usadas: list
     """
     # TODO: Implementar la función
     # - Imprimir intentos restantes X
@@ -118,16 +119,16 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas): # COMPLETA
                 print(i, end =" ")
 
 def actualizar_palabra_oculta(palabra, palabra_oculta, letra): # COMPLETA
-    """
-    Actualiza la palabra oculta revelando las apariciones de la letra
-    
-    Args:
-        palabra (str): La palabra completa a adivinar
-        palabra_oculta (str): La palabra actual con _ y letras adivinadas
-        letra (str): La letra que se ha adivinado
-        
-    Returns:
-        str: La palabra oculta actualizada
+    """Actualiza la palabra oculta revelando las apariciones de la letra
+
+    :param palabra: La palabra completa a adivinar
+    :type palabra: str
+    :param palabra_oculta: La palabra actual con _ y letras adivinadas
+    :type palabra_oculta: str
+    :param letra: La letra que se ha adivinado
+    :type letra: str
+    :returns: La palabra oculta actualizada
+    :rtype: str
     """
     # TODO: Implementar la función
     # - Recorrer la palabra original con un bucle for
