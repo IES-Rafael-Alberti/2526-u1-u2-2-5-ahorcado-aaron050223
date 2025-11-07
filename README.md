@@ -209,3 +209,9 @@ lista_palabra_oculta = []
 ```
 
 El fallo estaba en ```lista_palabra_oculta.append("_")``` ya que lo que habria que añadir a la lista es ```i``` y no ```"_"```. 
+
+# Comentarios
+
+Una prueba de que he cambiado la documentación del código es:
+
+https://github.com/IES-Rafael-Alberti/2526-u1-u2-2-5-ahorcado-aaron050223/blob/db3f9db3b1bf24e308e58284618b6183ac5c8ba2/src/ahorcado.py#L102-L110
