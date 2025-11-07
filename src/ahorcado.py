@@ -78,12 +78,6 @@ def solicitar_letra(letras_usadas): # COMPLETA
     :returns: La letra introducida en mayúsculas
     :rtype: str
     """
-    # TODO: Implementar la función
-    # - Usar un bucle while para repetir hasta que la letra sea válida X
-    # - Verificar que sea solo un carácter (len() == 1) X
-    # - Verificar que sea una letra (isalpha()) X
-    # - Verificar que no esté en letras_usadas (operador 'in') X
-    # - Convertir a mayúsculas (upper()) X
 
     bucle = None
     while bucle == None:
@@ -108,10 +102,6 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas): # COMPLETA
     :param letras_usadas: Lista de letras ya usadas
     :type letras_usadas: list
     """
-    # TODO: Implementar la función
-    # - Imprimir intentos restantes X
-    # - Imprimir la palabra con espacios entre caracteres X
-    # - Imprimir las letras usadas X
 
     # INTENTOS RESTANTES
     print(f"\nIntentos restantes >> {intentos}")
@@ -144,11 +134,6 @@ def actualizar_palabra_oculta(palabra, palabra_oculta, letra): # COMPLETA
     :returns: La palabra oculta actualizada
     :rtype: str
     """
-    # TODO: Implementar la función
-    # - Recorrer la palabra original con un bucle for
-    # - Usar enumerate() para obtener índice y carácter
-    # - Si el carácter coincide con la letra, reemplazar en palabra_oculta
-    # - Puedes convertir palabra_oculta a lista, modificar y volver a string
     
     lista_palabra_oculta = []
     for i in palabra_oculta:
@@ -173,13 +158,10 @@ def jugar():
     limpiar_pantalla()
     print("=== JUEGO DEL AHORCADO ===\n")
     
-    # Configuración inicial
     INTENTOS_MAXIMOS = 5
-    
-    # TODO: Solicitar la palabra al jugador 1
+
     palabra = solicitar_palabra()
     
-    # TODO: Inicializar variables del juego
     palabra_oculta = ""
     for i in palabra:
         palabra_oculta += "_"
@@ -188,31 +170,13 @@ def jugar():
     letras_usadas = []
     juego_terminado = False
     
-    
-    # TODO: Bucle principal del juego
-    # - Mientras haya intentos y el juego no haya terminado:
-    #   1. Mostrar el estado actual
-    #   2. Solicitar una letra
-    #   3. Añadir la letra a letras_usadas
-    #   4. Si la letra está en la palabra:
-    #      - Actualizar palabra_oculta
-    #      - Mostrar mensaje de acierto
-    #      - Si ya no hay '_' en palabra_oculta, el jugador ha ganado
-    #   5. Si la letra NO está en la palabra:
-    #      - Restar un intento
-    #      - Mostrar mensaje de fallo
-    
-    # TODO: Mostrar mensaje final
-    # - Si ganó: mostrar felicitación y la palabra
-    # - Si perdió: mostrar mensaje de derrota y la palabra correcta
-    
     while not juego_terminado and intentos > 0:
         mostrar_estado(palabra_oculta, intentos, letras_usadas)
         letra = solicitar_letra(letras_usadas)
         if letra in palabra:
             palabra_oculta = actualizar_palabra_oculta(palabra, palabra_oculta, letra)
             print("\n¡Has acertado!")
-            if not "_" in palabra_oculta:
+            if not "_" in palabra_oculta: 
                 juego_terminado = True
         else:
             intentos -= 1
@@ -231,11 +195,6 @@ def main():
     """
     jugar()
     
-    # TODO (Opcional): Preguntar si quiere jugar otra vez
-    # jugar_otra_vez = input("\n¿Quieres jugar otra vez? (s/n): ")
-    # if jugar_otra_vez.lower() == 's':
-    #     main()
-
     jugar_otra_vez = input("\n¿Quieres jugar otra vez? (s/n): ")
     if jugar_otra_vez.lower() == 's':
         main()
