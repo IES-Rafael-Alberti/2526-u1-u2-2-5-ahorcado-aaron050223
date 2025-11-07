@@ -151,7 +151,7 @@ Profesor: revilofe
 ## Licencia
 Material educativo para uso académico
 
-# Prueba de debug
+# Prueba del debugger
 
 Como prueba de que he debugeado añado la siguiente imagen:
 
