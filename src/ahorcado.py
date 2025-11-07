@@ -13,6 +13,8 @@ Fecha: 6/11/2025
 """
 
 import random 
+import requests
+import json
 
 def limpiar_pantalla(): # COMPLETA
     """
@@ -30,29 +32,41 @@ def solicitar_palabra(): # COMPLETA
     :returns: La palabra a adivinar en mayúsculas
     :rtype: str
     """
-    # TODO: Implementar la función
-    # - Usar un bucle while para repetir hasta que la palabra sea válida
-    # - Verificar que tenga al menos 5 caracteres (len())
-    # - Verificar que solo contenga letras (isalpha())
-    # - Convertir a mayúsculas (upper())
 
-    palabras = [
-    "Casa", "Perro", "Gato", "Luna", "Agua", "Fuego", "Tierra", "Aire", 
-    "Arbol", "Flor", "Montaña", "Cielo", "Nube", "Estrella", "Leche", 
-    "Manzana", "Coche", "Libro", "Mesa", "Silla", "Puerta", "Ventana", 
-    "Cama", "Noche", "Hombre", "Mujer", "Niño", "Niña", "Amigo", 
-    "Familia", "Comida", "Bebida", "Dinero", "Tiempo", "Trabajo", 
-    "Escuela", "Ciudad", "Pais", "Mundo", "Mano", "Ojos", "Nariz", 
-    "Boca", "Estar", "Tener", "Haber", "Venir", "Hacer", "Decir", 
-    "Comer", "Beber", "Dormir", "Jugar", "Hablar", "Querer", "Poder", 
-    "Saber", "Vivir", "Grande", "Pequeño", "Bueno", "Malo", "Feliz", 
-    "Triste", "Nuevo", "Viejo", "Bonito", "Caliente", "Frio", "Alto", 
-    "Bajo", "Rapido", "Lento", "Facil", "Dificil", "Blanco", "Negro", 
-    "Pero", "Para"
-    ]
+    # ESTA FUNCIÓN LA HE HECHO CON AYUDA DE IA
 
-    numero_azar = random.randint(1,78)
-    return palabras[numero_azar].upper()
+    palabra_valida = None
+    min_letras = 5
+
+    while palabra_valida is None:
+        url = "https://random-word-api.herokuapp.com/word?lang=es&number=15"
+        
+        response = requests.get(url)
+        palabras = response.json()
+
+        palabras_filtradas = [
+            palabra for palabra in palabras 
+            if len(palabra) >= min_letras
+        ]
+
+        if palabras_filtradas:
+            palabra_valida = random.choice(palabras_filtradas)
+    
+    lista_palabra_adivinar = list(palabra_valida)
+    
+    for indice,letra in enumerate(palabra_valida.upper()):
+        if letra == "Á":
+            lista_palabra_adivinar[indice] = "A"
+        elif letra == "É":
+            lista_palabra_adivinar[indice] = "E"
+        elif letra == "Í":
+            lista_palabra_adivinar[indice] = "I"
+        elif letra == "Ó":
+            lista_palabra_adivinar[indice] = "O"
+        elif letra == "Ú":
+            lista_palabra_adivinar[indice] = "U"
+
+    return "".join(lista_palabra_adivinar).upper()
 
 def solicitar_letra(letras_usadas): # COMPLETA
     """
@@ -164,6 +178,7 @@ def jugar():
     
     # TODO: Solicitar la palabra al jugador 1
     palabra = solicitar_palabra()
+    print(palabra)
     
     
     # TODO: Inicializar variables del juego
