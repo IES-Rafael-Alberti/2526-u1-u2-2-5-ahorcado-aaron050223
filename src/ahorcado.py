@@ -178,8 +178,6 @@ def jugar():
     
     # TODO: Solicitar la palabra al jugador 1
     palabra = solicitar_palabra()
-    print(palabra)
-    
     
     # TODO: Inicializar variables del juego
     palabra_oculta = ""
