@@ -1,3 +1,5 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/8lAzcOMh)
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=21506783&assignment_repo_type=AssignmentRepo)
 # Práctica: El Juego del Ahorcado
 
 ## Descripción
@@ -148,3 +150,68 @@ Profesor: revilofe
 
 ## Licencia
 Material educativo para uso académico
+
+# Prueba del debugger
+
+Como prueba de que he debugeado añado la siguiente imagen:
+
+![Imagen del debug](assets/prueba_debug.png)
+
+Lo que ocurria en el código era que no reconocia la letra que habia introducido en los turnos anteriores. Por ejemplo (Teniendo en cuenta que la palabra es silla):
+
+```
+Intentos restantes >> 5
+
+Palabra:
+_ _ _ _ _ 
+
+De momento no has usado ninguna letra
+
+Introduce una letra >> a
+```
+
+Al poner "a" se quita el ultimo guión y se pone una "a". Vamos a poner ahora la "l"
+
+```
+Intentos restantes >> 5
+
+Palabra:
+_ _ _ _ A 
+
+Letras usadas:
+
+a
+
+Introduce una letra >> l
+```
+
+Lo que salía es lo siguiente:
+
+```
+Intentos restantes >> 5
+
+Palabra:
+_ _ L L _ 
+
+Letras usadas:
+
+a l
+
+Introduce una letra >> 
+```
+
+Como se ve, se me eliminaban los caracteres acertados anteriormente. Depurando vi que el fallo estaba en esta parte:
+
+```python
+lista_palabra_oculta = []
+    for i in palabra_oculta:
+        lista_palabra_oculta.append("_")
+```
+
+El fallo estaba en ```lista_palabra_oculta.append("_")``` ya que lo que habria que añadir a la lista es ```i``` y no ```"_"```. 
+
+# Comentarios
+
+Una prueba de que he cambiado la documentación del código es:
+
+https://github.com/IES-Rafael-Alberti/2526-u1-u2-2-5-ahorcado-aaron050223/blob/db3f9db3b1bf24e308e58284618b6183ac5c8ba2/src/ahorcado.py#L102-L110
